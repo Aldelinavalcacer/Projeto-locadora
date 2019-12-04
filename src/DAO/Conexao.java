@@ -9,7 +9,7 @@ public class Conexao {
         try {
             Class.forName("com.sql.jdbc.Driver");
             String url= "jdbc:msql://localhost/locadora";
-            con = DriverManager.getConnection (url, "root", "123");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (Exception e){
             JOptionPane.showMessageDialog (null, "Erro na conexão com o banco",
                     "Video Locadora", JOptionPane.ERROR_MESSAGE);
