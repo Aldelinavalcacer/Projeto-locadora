@@ -1,12 +1,13 @@
 
 package DAO;
-import java.sql.*;
+
 import Modelo.Funcionario;
+import java.sql.*;
 
 public class FuncionarioDAO extends ExecuteSQL{
     
     public FuncionarioDAO (Connection con) {
-        super (con);
+        super(con);
     }
     public boolean Logar (String login, String senha){
         boolean finalResult = false;
@@ -14,7 +15,7 @@ public class FuncionarioDAO extends ExecuteSQL{
             String consulta ="select login, senha from funcionario"
             + "where login = '" + login + " 'and senha = '" + senha + "'";
 
-          PreparedStatement ps = getCon ().prepareStatement (consulta);
+            PreparedStatement ps = getCon().prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             
             if (rs != null){
@@ -34,6 +35,4 @@ public class FuncionarioDAO extends ExecuteSQL{
     
 }
 
-    private Object getCon() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+}
