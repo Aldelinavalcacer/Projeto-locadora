@@ -1,9 +1,18 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Visao.Consultar;
+
+import DAO.ClienteDAO;
+import DAO.Conexao;
+import Modelo.Cliente;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +25,11 @@ public class CunsultarCliente extends javax.swing.JFrame {
      */
     public CunsultarCliente() {
         initComponents();
+        
+        setTitle ("Vídeo Locadora");
+        setSize (970, 380);
+        AtualizaTable ();
+        
     }
 
     /**
@@ -37,7 +51,7 @@ public class CunsultarCliente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -60,8 +74,8 @@ public class CunsultarCliente extends javax.swing.JFrame {
 
         jButton2.setText("Ok");
 
-        jTable2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -69,7 +83,7 @@ public class CunsultarCliente extends javax.swing.JFrame {
                 "Código", "Cliente", "RG", "CPF", "Telefone", "Email"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTable);
 
         jButton4.setText("TODOS");
 
@@ -168,8 +182,32 @@ public class CunsultarCliente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void AtualizaTable() {
+        Connection con = Conexao.AbrirConexao();
+        ClienteDAO bd = new ClienteDAO (con);
+        List<Cliente> lista = new ArrayList<>();
+        lista = bd.ListarCliente ();
+        DefaultTableModel tmb =
+                (DefaultTableModel) jTable.getModel ();
+        while (tbm.getRowCount() >0) {
+            tbm.removeRow (0);
+        }
+        int i = 0;
+        for (Cliente tab : lista){
+            tbm.addRow (new String [i]);
+            jTable.setValueAt (tab.getCodigo (), i, 0);
+            jTable.setValueAt (tab.getNome (), i, 1);
+            jTable.setValueAt (tab.getRG (), i, 2);
+            jTable.setValueAt (tab.getCPF (), i, 3);
+            jTable.setValueAt (tab.getTelefone (), i, 4);
+            jTable.setValueAt (tab.getEmail (), i, 5);
+            i++;
+        }
+        Conexao.FecharConexao(con);
+    }
 }
