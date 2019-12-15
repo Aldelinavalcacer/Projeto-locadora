@@ -57,6 +57,14 @@ public class Aluguel {
     public void setData_devolucao(String data_devolucao) {
         this.data_devolucao = data_devolucao;
     }
+
+    public int getCoddvd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCoddvd(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
