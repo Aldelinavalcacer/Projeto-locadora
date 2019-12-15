@@ -137,7 +137,7 @@ public class Login extends javax.swing.JFrame {
            pfSenha.setText ("");
        } else {
         if (sql.Logar (login,senha) == true){
-            new Menu().setVisible(true) ;
+            new Menu().setVisible(true);
                dispose ();
         }else {
             JOptionPane.showMessageDialog(null, "Usuário ou Senha Invalidos",
