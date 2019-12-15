@@ -7,8 +7,8 @@ public class Conexao {
     public static Connection AbrirConexao(){
         Connection con = null;
         try {
-            Class.forName("com.sql.jdbc.Driver");
-            String url= "jdbc:msql://localhost/locadora";
+            Class.forName("com.mysql.jdbc.Driver");
+            String url= "jdbc:mysql://localhost/locadora";
             con = DriverManager.getConnection(url, "root", "");
         } catch (Exception e){
             JOptionPane.showMessageDialog (null, "Erro na conexão com o banco",
