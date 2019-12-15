@@ -8,7 +8,10 @@ package DAO;
 import Modelo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -52,7 +55,7 @@ public List <Cliente> ListarCliente () {
         ResultSet rs = ps.executeQuery();
         
         if (rs != null){
-            while (rs.nex ()) {
+            while (rs.next ()) {
                 Cliente a = new Cliente ();
                 a.setCodigo(rs.getInt (1));
                 a.setNome(rs.getString (2));
@@ -70,6 +73,34 @@ public List <Cliente> ListarCliente () {
     } catch (SQLException e) {
         return null;
     }
+}
+
+public boolean Testar_Cliente(int cod) {
+            boolean Resultado = false;
+            try {
+                
+                String sql = "select * from cliente where idcliente = " + cod + "";
+                PreparedStatement ps = getCon().prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                
+                if (rs != null) {
+                    while (rs.next()) {
+                        Resultado = true;
+                    }
+                }
+            } catch (SQLException ex) {
+                ex.getMessage();
+            }
+            return Resultado;
+      }
+
+public void Pesquisar_Nome_Cliente (String nome){
+    String sql = "select idcliente, nome, RG, CPF, Telefone, Email"
+            +"from cliente where nome Like '"+ nome +"'";
+}
+public void Pesquisar_Cod_Cliente (int cod) {
+    String sql = "select idcliente, nome, RG, CPF, Telefone, Email"
+            +"from cliente where idcliente '"+ cod +"'";
 }
 
 
