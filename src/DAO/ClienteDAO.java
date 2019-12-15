@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author Aldel
+ * @author Laura
  */
 public class ClienteDAO extends ExecuteSQL{
     public ClienteDAO(Connection con){
