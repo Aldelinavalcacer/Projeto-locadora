@@ -10,5 +10,17 @@ package Modelo;
  * @author Aldel
  */
 public class Listar {
+
+    public void setCoddvd(Integer iddvd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCodaluguel(Integer idaluguel) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCodcliente(Integer idcliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
