@@ -75,6 +75,7 @@ public List <Cliente> ListarCliente () {
     }
 }
 
+
 public boolean Testar_Cliente(int cod) {
             boolean Resultado = false;
             try {
@@ -93,6 +94,38 @@ public boolean Testar_Cliente(int cod) {
             }
             return Resultado;
       }
+
+public List<Cliente> CapturarCliente(int cod) {
+            String sql = "select * from cliente where idcliente =" + cod + " ";
+            List<Cliente> lista = new ArrayList<>();
+            try {
+                PreparedStatement ps = getCon().prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        Cliente a = new Cliente();
+                        a.setCodigo(rs.getInt(1));
+                        a.setNome(rs.getString(2));
+                        a.setNascimento(rs.getString(3));
+                        a.setRG(rs.getString(4));
+                        a.setCPF(rs.getString(5));
+                        a.setEmail(rs.getString(6));
+                        a.setTelefone(rs.getString(7));
+                        a.setBairro(rs.getString(8));
+                        a.setRua(rs.getString(9));
+                        a.setNumero(rs.getInt(10));
+                        a.setCEP(rs.getString(11));
+                        lista.add(a);
+                    }
+                    return lista;
+                 } else {
+                    return null;
+                }
+            } catch (SQLException e) {
+                return null;
+            }
+        }
+
 
 public void Pesquisar_Nome_Cliente (String nome){
     String sql = "select idcliente, nome, RG, CPF, Telefone, Email"
