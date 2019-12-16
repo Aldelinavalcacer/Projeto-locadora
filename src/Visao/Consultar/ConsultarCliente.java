@@ -45,6 +45,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
     Conexao.FecharConexao(con);
     }
 
+
     @SuppressWarnings("unchecked")
                               
     private void initComponents() {
@@ -127,9 +128,10 @@ public class ConsultarCliente extends javax.swing.JFrame {
         );
 
         pack();
-    }                     
+    }
 
     public static void main(String args[]) {
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -153,7 +155,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
             }
         });
     }
-                  
+                   
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

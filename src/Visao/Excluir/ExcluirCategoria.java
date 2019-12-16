@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MONIQUE BENTO
+ * @author Laura
  */
 public class ExcluirCategoria extends javax.swing.JFrame {
 
